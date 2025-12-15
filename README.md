@@ -337,17 +337,6 @@ The account's nonce after the first tx is 1
    3. [Example](https://sepolia.explorer.zksync.io/tx/0xe7a2a895d9854db5a6cc60df60524852d9957dd17adcc5720749f60b4da3eba7)
       1. Only 3 logs emitted!
    
-# FAQ
-
-## What if I don't add the contract hash to factory deps? 
-The transaction will revert. The `ContractDeployer` checks to see if it knows the hash, and if not, it will revert! The `ContractDeployer` calls the `KnownCodesStorage` contract, which keeps track of *every single contract hash deployed on the zkSync chain. Crazy right!*
-
-## Why can't we do these deployments with foundry or cast? 
-Foundry and cast don't have support for the `factoryDeps` transaction field, or support for type `113` transactions. 
-
-## Why can I use `forge create --legacy` to deploy a regular contract?
-`foundry-zksync` is smart enough to see a legacy deployment (when you send a transaction to the 0 address with data) and transform it into a contract call to the deployer. It's only smart enough for legacy deployments as of today, not the new `EIP-1559` type 2 transactions or account creation.
-
 # Acknowledgements 
 - [Types of AAs on different chains](https://www.bundlebear.com/factories/all)
 - [eth-infinitism](https://github.com/eth-infinitism/account-abstraction/)
@@ -357,4 +346,4 @@ Foundry and cast don't have support for the `factoryDeps` transaction field, or 
 - [Alchemy LightAccount](https://github.com/alchemyplatform/light-account/)
 
 # Disclaimer
-*This codebase is for educational purposes only and has not undergone a security review.*
+*This codebase has not undergone a security review.*
