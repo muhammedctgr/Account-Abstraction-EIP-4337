@@ -48,3 +48,28 @@ async function main() {
     //     encryptedJson,
     //     process.env.PRIVATE_KEY_PASSWORD!
     // )
+
+     wallet = wallet.connect(provider)
+
+    const abi = JSON.parse(fs.readFileSync("./out/ZkMinimalAccount.sol/ZkMinimalAccount.json", "utf8"))["abi"]
+    console.log("Setting up contract details...")
+    const zkMinimalAccount = new Contract(ZK_MINIMAL_ADDRESS, abi, provider)
+
+    // If this doesn't log the owner, you have an issue!
+    console.log(`The owner of this minimal account is: `, await zkMinimalAccount.owner())
+    const usdcAbi = JSON.parse(fs.readFileSync("./out/ERC20/IERC20.sol/IERC20.json", "utf8"))["abi"]
+    const usdcContract = new Contract(USDC_ZKSYNC, usdcAbi, provider)
+
+    console.log("Populating transaction...")
+    let approvalData = await usdcContract.approve.populateTransaction(
+        RANDOM_APPROVER,
+        AMOUNT_TO_APPROVE
+    )
+
+    let aaTx = approvalData
+
+    const gasLimit = await provider.estimateGas({
+        ...aaTx,
+        from: wallet.address,
+    })
+    const gasPrice = (await provider.getFeeData()).gasPrice!
