@@ -73,3 +73,29 @@ async function main() {
         from: wallet.address,
     })
     const gasPrice = (await provider.getFeeData()).gasPrice!
+
+    aaTx = {
+        ...aaTx,
+        from: ZK_MINIMAL_ADDRESS,
+        gasLimit: gasLimit,
+        gasPrice: gasPrice,
+        chainId: (await provider.getNetwork()).chainId,
+        nonce: await provider.getTransactionCount(ZK_MINIMAL_ADDRESS),
+        type: 113,
+        customData: {
+            gasPerPubdata: utils.DEFAULT_GAS_PER_PUBDATA_LIMIT,
+        } as types.Eip712Meta,
+        value: 0n,
+    }
+    const signedTxHash = EIP712Signer.getSignedDigest(aaTx)
+
+    console.log("Signing transaction...")
+    const signature = ethers.concat([
+        ethers.Signature.from(wallet.signingKey.sign(signedTxHash)).serialized,
+    ])
+    console.log(signature)
+
+    aaTx.customData = {
+        ...aaTx.customData,
+        customSignature: signature,
+    }
