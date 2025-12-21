@@ -9,6 +9,8 @@ remappings = [
     '@openzeppelin/contracts-upgradeable=lib/openzeppelin-contracts-upgradeable/contracts'
 ]
 
+via-ir = true
+
 [etherscan]
 mainnet = { key = "${ETHERSCAN_API_KEY}" }
 sepolia = {key = "${ETHERSCAN_API_KEY}"}
