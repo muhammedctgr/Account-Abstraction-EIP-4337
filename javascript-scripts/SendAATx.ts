@@ -99,3 +99,18 @@ async function main() {
         ...aaTx.customData,
         customSignature: signature,
     }
+
+    console.log(
+        `The minimal account nonce before the first tx is ${await provider.getTransactionCount(
+            ZK_MINIMAL_ADDRESS,
+        )}`,
+    )
+
+    const sentTx = await provider.broadcastTransaction(
+        types.Transaction.from(aaTx).serialized,
+    )
+
+    console.log(`Transaction sent from minimal account with hash ${sentTx.hash}`)
+    await sentTx.wait()
+
+    
