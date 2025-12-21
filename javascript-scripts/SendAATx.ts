@@ -113,4 +113,17 @@ async function main() {
     console.log(`Transaction sent from minimal account with hash ${sentTx.hash}`)
     await sentTx.wait()
 
-    
+    // Checking that the nonce for the account has increased
+    console.log(
+        `The account's nonce after the first tx is ${await provider.getTransactionCount(
+            ZK_MINIMAL_ADDRESS,
+        )}`,
+    )
+}
+
+main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error)
+        process.exit(1)
+    })
