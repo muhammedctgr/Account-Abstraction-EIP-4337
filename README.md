@@ -16,11 +16,6 @@ Right now, every single transaction in web3 stems from a single private key.
 
 > account abstraction means that not only the execution of a transaction can be arbitrarily complex computation logic as specified by the EVM, but also the authorization logic.
 
-- [Vitalik Buterin](https://ethereum-magicians.org/t/implementing-account-abstraction-as-part-of-eth1-x/4020)
-- [EntryPoint Contract v0.6](https://etherscan.io/address/0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789)
-- [EntryPoint Contract v0.7](https://etherscan.io/address/0x0000000071727De22E5E9d8BAf0edAc6f37da032)
-- [zkSync AA Transaction Flow](https://docs.zksync.io/build/developer-reference/account-abstraction.html#the-transaction-flow)
-
 To put it simply:
 
 Traditional Model: Private Key = Wallet. The private key is the ultimate authority.
@@ -178,8 +173,8 @@ By abstracting away the complexities of private key management and gas payments,
 ## Installation
 
 ```bash
-git clone https://github.com/PatrickAlphaC/minimal-account-abstraction
-cd minimal-account-abstraction
+git clone https://github.com/muhammedctgr/Account-Abstraction-EIP-4337
+cd Account-Abstraction-EIP-4337
 make
 ```
 
@@ -337,14 +332,12 @@ The account's nonce after the first tx is 1
    2. It will put in another system contract that this address is associated with the first has
    3. [Example](https://sepolia.explorer.zksync.io/tx/0xe7a2a895d9854db5a6cc60df60524852d9957dd17adcc5720749f60b4da3eba7)
       1. Only 3 logs emitted!
-   
-# Acknowledgements 
-- [Types of AAs on different chains](https://www.bundlebear.com/factories/all)
-- [eth-infinitism](https://github.com/eth-infinitism/account-abstraction/)
-- [Dan Nolan](https://www.youtube.com/watch?v=b4KWkIAPa3U)
-  - [Twitter Video](https://x.com/BeingDanNolan/status/1795848790043218029)
-- [zerodevapp](https://github.com/zerodevapp/kernel/)
-- [Alchemy LightAccount](https://github.com/alchemyplatform/light-account/)
+
+## Further reading and Supporting Docs
+- [Vitalik Buterin](https://ethereum-magicians.org/t/implementing-account-abstraction-as-part-of-eth1-x/4020)
+- [EntryPoint Contract v0.6](https://etherscan.io/address/0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789)
+- [EntryPoint Contract v0.7](https://etherscan.io/address/0x0000000071727De22E5E9d8BAf0edAc6f37da032)
+- [zkSync AA Transaction Flow](https://docs.zksync.io/build/developer-reference/account-abstraction.html#the-transaction-flow)
 
 # Disclaimer
 *This codebase has not undergone a security review.*
