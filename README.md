@@ -10,7 +10,7 @@ Account Abstraction fundamentally redefines how transactions are authorized and 
 
 EoAs are now smart contracts. That's all account abstraction is.
 
-But what does that mean?
+But what does that really mean?
 
 Right now, every single transaction in web3 stems from a single private key. 
 
